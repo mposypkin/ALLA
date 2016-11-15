@@ -46,9 +46,10 @@ int main() {
     }
     Ini_Data(I, &tsof, lb, ub, x);
 
+    TersoffFAD tgrad;
     //-----------------------------------------------------------------------
     //  Vychislenie energhii i gradienta energhii sistemy po parametram koordinat atomov
-    F = grad(I, tsof, lb, ub, x, g);
+    F = tgrad.grad(I, tsof, lb, ub, x, g);
 
     printf("\n  F = %18.12e", F);
     for (i = 0; i < n; i++) {
@@ -62,7 +63,7 @@ int main() {
         cnt ++;
         g[1] = 0;
         snowgoose::VecUtils::vecSaxpy(n, x, g, -alpha, z);
-        double Fn = grad(I, tsof, lb, ub, z, gz);
+        double Fn = tgrad.grad(I, tsof, lb, ub, z, gz);
         
         if (Fn < F) {
             F = Fn;

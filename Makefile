@@ -1,5 +1,5 @@
 ROOT=./
-BINS = tsofgrad.exe
+BINS = tsofgrad.exe tsofgradn.exe
 TESTS = 
 
 
